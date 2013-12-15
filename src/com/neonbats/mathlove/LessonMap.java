@@ -27,6 +27,10 @@ public class LessonMap extends Activity {
     		dialog = new Dialog(LessonMap.this);
         	dialog.setContentView(R.layout.lessonpopup);
         	dialog.setTitle("Lesson 1");
+        	((TextView)dialog.findViewById(R.id.lessonHeader)).setText("Fractals 101");
+        	((TextView)dialog.findViewById(R.id.lessonText)).setText("This lesson will introduce you to fractals, including how they are defined, what they look like, and a brief quiz.");
+        	
+        	
         	dialog.show();
     		
     		break;
