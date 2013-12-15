@@ -22,6 +22,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="1" />
         
         <Space android:layout_width="30dp"/>
@@ -42,6 +43,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="2" />
         
         <Space android:layout_width="30dp"/>
@@ -52,6 +54,7 @@
            android:layout_height="30dp"
            android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
            android:text="3" />
         
         <Space android:layout_width="30dp"/>
@@ -73,6 +76,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="4" />
         
         <Space android:layout_width="30dp"/>
@@ -83,6 +87,7 @@
            android:layout_height="30dp"
            android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
            android:text="5" />
         
         <Space android:layout_width="30dp"/>
@@ -93,6 +98,7 @@
            android:layout_height="30dp"
            android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
            android:text="6" />
         
     </TableRow>
@@ -115,6 +121,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="7" />
         
         <Space android:layout_width="30dp"/>
@@ -139,6 +146,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="8" />
         
         <Space android:layout_width="30dp"/>
@@ -159,6 +167,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="9" />
         
         <Space android:layout_width="30dp"/>
@@ -188,6 +197,7 @@
             android:layout_height="30dp"
             android:alpha=".95"
             android:background="#AAAAAA"
+            android:onClick="onClick"
             android:text="10" />
         
         <Space android:layout_width="30dp"/>
