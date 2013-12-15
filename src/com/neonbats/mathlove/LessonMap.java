@@ -2,10 +2,12 @@ package com.neonbats.mathlove;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class LessonMap extends Activity {
@@ -58,6 +60,16 @@ public class LessonMap extends Activity {
         	dialog.setTitle("Lesson 1");
         	((TextView)dialog.findViewById(R.id.lessonHeader)).setText("Fractals 101");
         	((TextView)dialog.findViewById(R.id.lessonText)).setText("This lesson will introduce you to fractals, including how they are defined, what they look like, and a brief quiz.");
+        	
+        	Button lesson = (Button)dialog.findViewById(R.id.start);
+        	lesson.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                	 Intent myIntent = new Intent(LessonMap.this, LessonOne.class);
+                     startActivityForResult(myIntent, 0);
+                }
+
+            });
         	
         	dialog.show();
 		
