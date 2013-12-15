@@ -17,37 +17,123 @@ public class LessonMap extends Activity {
 		 setContentView(R.layout.lessonmap);
 		 
 		 int currLevel;
-		 SharedPreferences sharedPref = this.getPreferences(this.MODE_PRIVATE);
+		 SharedPreferences sharedPref = getSharedPreferences("com.neonbats.mathlove.levels",0);
 		 
-		 for(int i = 1; i < 10; i++){
-			 String tempLevel = "level" + i;
+		 for(int i = 1; i <= 10; i++){
+			 String tempLevel = "levelunlock" + i;
 			 currLevel = sharedPref.getInt(tempLevel, 0);
 			 
-			 if(currLevel != 1){
+			 if(currLevel == 0){
 				 switch(i){
-				 case 1: this.findViewById(R.id.button2).setBackgroundColor(0xFFCC3232);
-				 case 2: this.findViewById(R.id.button3).setBackgroundColor(0xFFCC3232);
-				 case 3: this.findViewById(R.id.button4).setBackgroundColor(0xFFCC3232);
-				 case 4: this.findViewById(R.id.button5).setBackgroundColor(0xFFCC3232);
-				 case 5: this.findViewById(R.id.button6).setBackgroundColor(0xFFCC3232);
-				 case 6: this.findViewById(R.id.button7).setBackgroundColor(0xFFCC3232);
-				 case 7: this.findViewById(R.id.button8).setBackgroundColor(0xFFCC3232);
-				 case 8: this.findViewById(R.id.button9).setBackgroundColor(0xFFCC3232);
-				 case 9: this.findViewById(R.id.button10).setBackgroundColor(0xFFCC3232);
+				 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFFCC3232);
+				 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFFCC3232);
+				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFFCC3232);
+				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFFCC3232);
+				 case 5: LessonMap.this.findViewById(R.id.button5).setBackgroundColor(0xFFCC3232);
+				 case 6: LessonMap.this.findViewById(R.id.button6).setBackgroundColor(0xFFCC3232);
+				 case 7: LessonMap.this.findViewById(R.id.button7).setBackgroundColor(0xFFCC3232);
+				 case 8: LessonMap.this.findViewById(R.id.button8).setBackgroundColor(0xFFCC3232);
+				 case 9: LessonMap.this.findViewById(R.id.button9).setBackgroundColor(0xFFCC3232);
+				 case 10: LessonMap.this.findViewById(R.id.button10).setBackgroundColor(0xFFCC3232);
 				 }
+			 } else {
+				 if(currLevel == 1){
+					 switch(i){
+					 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFFAAAAAA);
+					 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFFAAAAAA);
+    				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFFAAAAAA);
+    				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFFAAAAAA);
+    				 case 5: LessonMap.this.findViewById(R.id.button5).setBackgroundColor(0xFFAAAAAA);
+    				 case 6: LessonMap.this.findViewById(R.id.button6).setBackgroundColor(0xFFAAAAAA);
+    				 case 7: LessonMap.this.findViewById(R.id.button7).setBackgroundColor(0xFFAAAAAA);
+    				 case 8: LessonMap.this.findViewById(R.id.button8).setBackgroundColor(0xFFAAAAAA);
+    				 case 9: LessonMap.this.findViewById(R.id.button9).setBackgroundColor(0xFFAAAAAA);
+    				 case 10: LessonMap.this.findViewById(R.id.button10).setBackgroundColor(0xFFAAAAAA);
+    				 }
+				 } else {
+					 switch(i){
+					 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFF608341);
+    				 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFF608341);
+    				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFF608341);
+    				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFF608341);
+    				 case 5: LessonMap.this.findViewById(R.id.button5).setBackgroundColor(0xFF608341);
+    				 case 6: LessonMap.this.findViewById(R.id.button6).setBackgroundColor(0xFF608341);
+    				 case 7: LessonMap.this.findViewById(R.id.button7).setBackgroundColor(0xFF608341);
+    				 case 8: LessonMap.this.findViewById(R.id.button8).setBackgroundColor(0xFF608341);
+    				 case 9: LessonMap.this.findViewById(R.id.button9).setBackgroundColor(0xFF608341);
+    				 case 10: LessonMap.this.findViewById(R.id.button10).setBackgroundColor(0xFF608341);
+    				 }
+				 }
+				 
 			 }
 		 }
 		  
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		int currLevel;
+		 SharedPreferences sharedPref = getSharedPreferences("com.neonbats.mathlove.levels",0);
+		 
+		 for(int i = 1; i <= 10; i++){
+			 String tempLevel = "levelunlock" + i;
+			 currLevel = sharedPref.getInt(tempLevel, 0);
+			 
+			 if(currLevel == 0){
+				 switch(i){
+				 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFFCC3232);
+				 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFFCC3232);
+				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFFCC3232);
+				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFFCC3232);
+				 case 5: LessonMap.this.findViewById(R.id.button5).setBackgroundColor(0xFFCC3232);
+				 case 6: LessonMap.this.findViewById(R.id.button6).setBackgroundColor(0xFFCC3232);
+				 case 7: LessonMap.this.findViewById(R.id.button7).setBackgroundColor(0xFFCC3232);
+				 case 8: LessonMap.this.findViewById(R.id.button8).setBackgroundColor(0xFFCC3232);
+				 case 9: LessonMap.this.findViewById(R.id.button9).setBackgroundColor(0xFFCC3232);
+				 case 10: LessonMap.this.findViewById(R.id.button10).setBackgroundColor(0xFFCC3232);
+				 }
+			 } else {
+				 if(currLevel == 1){
+					 switch(i){
+					 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFFAAAAAA);
+					 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFFAAAAAA);
+    				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFFAAAAAA);
+    				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFFAAAAAA);
+    				 case 5: LessonMap.this.findViewById(R.id.button5).setBackgroundColor(0xFFAAAAAA);
+    				 case 6: LessonMap.this.findViewById(R.id.button6).setBackgroundColor(0xFFAAAAAA);
+    				 case 7: LessonMap.this.findViewById(R.id.button7).setBackgroundColor(0xFFAAAAAA);
+    				 case 8: LessonMap.this.findViewById(R.id.button8).setBackgroundColor(0xFFAAAAAA);
+    				 case 9: LessonMap.this.findViewById(R.id.button9).setBackgroundColor(0xFFAAAAAA);
+    				 case 10: LessonMap.this.findViewById(R.id.button10).setBackgroundColor(0xFFAAAAAA);
+    				 }
+				 } else {
+					 switch(i){
+					 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFF608341);
+    				 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFF608341);
+    				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFF608341);
+    				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFF608341);
+    				 case 5: LessonMap.this.findViewById(R.id.button5).setBackgroundColor(0xFF608341);
+    				 case 6: LessonMap.this.findViewById(R.id.button6).setBackgroundColor(0xFF608341);
+    				 case 7: LessonMap.this.findViewById(R.id.button7).setBackgroundColor(0xFF608341);
+    				 case 8: LessonMap.this.findViewById(R.id.button8).setBackgroundColor(0xFF608341);
+    				 case 9: LessonMap.this.findViewById(R.id.button9).setBackgroundColor(0xFF608341);
+    				 case 10: LessonMap.this.findViewById(R.id.button10).setBackgroundColor(0xFF608341);
+    				 }
+				 }
+				 
+			 }
+		 }
+		
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 	
 	
 	// Implement the OnClickListener callback
     public void onClick(View v) {
       // do something when the button is clicked
-    	Log.i("test","totally worked");
-    	Dialog dialog;
     	
-    	SharedPreferences sharedPref = this.getPreferences(this.MODE_PRIVATE);
+    	final Dialog dialog;
+    	
+    	SharedPreferences sharedPref = getSharedPreferences("com.neonbats.mathlove.levels",0);
      	int currLevel = 0;
      	int currLevel2 = 0;
      	
@@ -67,6 +153,7 @@ public class LessonMap extends Activity {
                 public void onClick(View v) {
                 	 Intent myIntent = new Intent(LessonMap.this, LessonOne.class);
                      startActivityForResult(myIntent, 0);
+                     dialog.dismiss();                     
                 }
 
             });
@@ -270,7 +357,8 @@ public class LessonMap extends Activity {
     		
     	
     	}
+    	
+    	
     	    	
     }
-	
 }
