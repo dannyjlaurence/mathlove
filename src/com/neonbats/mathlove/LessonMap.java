@@ -2,7 +2,7 @@ package com.neonbats.mathlove;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.widget.TableLayout;
 
 public class LessonMap extends Activity {
 
@@ -10,7 +10,7 @@ public class LessonMap extends Activity {
 		 super.onCreate(savedInstanceState);
 		 setContentView(R.layout.lessonmap);
 		 
-		 LinearLayout ll = new LinearLayout(this);
+		 TableLayout ll = (TableLayout)findViewById(R.id.grid_view);
 		 ll.setBackgroundResource(R.drawable.path);
 		 
 	}
