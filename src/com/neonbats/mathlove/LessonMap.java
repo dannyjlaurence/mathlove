@@ -159,8 +159,6 @@ public class LessonMap extends Activity {
             });
         	
         	dialog.show();
-		
-    		
     		
     		break;
     	case R.id.button2:
