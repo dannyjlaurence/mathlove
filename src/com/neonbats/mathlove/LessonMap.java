@@ -26,7 +26,7 @@ public class LessonMap extends Activity {
 			 
 			 if(currLevel == 0){
 				 switch(i){
-				 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFFCC3232);
+				 case 1: LessonMap.this.findViewById(R.id.button1).setBackgroundColor(0xFFAAAAAA);
 				 case 2: LessonMap.this.findViewById(R.id.button2).setBackgroundColor(0xFFCC3232);
 				 case 3: LessonMap.this.findViewById(R.id.button3).setBackgroundColor(0xFFCC3232);
 				 case 4: LessonMap.this.findViewById(R.id.button4).setBackgroundColor(0xFFCC3232);
@@ -68,6 +68,8 @@ public class LessonMap extends Activity {
 				 
 			 }
 		 }
+		 
+		 
 		  
 	}
 	

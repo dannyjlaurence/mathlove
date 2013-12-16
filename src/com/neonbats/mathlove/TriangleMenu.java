@@ -127,7 +127,7 @@ class TriangleMenu extends View {
 			textY1 = (float) ((0.3)*(py[1]-py[0]) + py[0]);
 		}
 		
-		canvPaint.setColor(Color.BLUE);
+		canvPaint.setColor(0xFF421C52);
 		canv.drawPath(p, canvPaint);
 		
 		if (selection == 2) {
@@ -155,7 +155,7 @@ class TriangleMenu extends View {
 			textY2 = (float) ((0.3)*(py[1]-py[0]) + py[0]);
 		}
 		
-		canvPaint.setColor(Color.BLUE);
+		canvPaint.setColor(0xFF421C52);
 		canv.drawPath(p, canvPaint);
 		
 		if (selection == 3) {
@@ -184,7 +184,7 @@ class TriangleMenu extends View {
 			textY3 = (float) ((0.3)*(py[2]-py[1]) + py[1]);
 		}
 
-		canvPaint.setColor(Color.BLUE);
+		canvPaint.setColor(0xFF421C52);
 		canv.drawPath(p, canvPaint);
 		
 		canvPaint.setColor(Color.WHITE);
