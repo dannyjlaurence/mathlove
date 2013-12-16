@@ -155,7 +155,6 @@ public class LessonMap extends Activity {
                      startActivityForResult(myIntent, 0);
                      dialog.dismiss();                     
                 }
-
             });
         	
         	dialog.show();
