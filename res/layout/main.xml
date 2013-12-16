@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="2"
@@ -9,69 +9,58 @@
     android:stretchMode="columnWidth" >
 
     <LinearLayout
-        android:id="@+id/topleft"
-        android:layout_width="160dp"
-        android:layout_height="200dp"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:background="@drawable/shape" >
-
-        <ImageView
-            android:id="@+id/myimage1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+        android:id="@+id/base_shape_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
     </LinearLayout>
+
+    <com.neonbats.mathlove.DrawingView
+        android:id="@+id/drawing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_weight="1"
+        android:background="#FFFFFFFF"
+        android:contentDescription="@string/canv" />
 
     <LinearLayout
-        android:id="@+id/topright"
-        android:layout_width="160dp"
-        android:layout_height="200dp"
-        android:layout_column="1"
-        android:layout_row="0"
-        android:background="@drawable/shape" >
-
-        <ImageView
-            android:id="@+id/myimage2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
-    </LinearLayout>
+        android:id="@+id/color_picker_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" />
 
     <LinearLayout
-        android:id="@+id/bottomleft"
-        android:layout_width="160dp"
-        android:layout_height="200dp"
-        android:layout_column="0"
-        android:layout_row="1"
-        android:background="@drawable/shape" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
 
-        <ImageView
-            android:id="@+id/myimage3"
+        <Button
+            android:id="@+id/clear"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" />
-    </LinearLayout>
+            android:text="@string/clear" />
 
-    <LinearLayout
-        android:id="@+id/bottomright"
-        android:layout_width="160dp"
-        android:layout_height="200dp"
-        android:layout_column="1"
-        android:layout_row="1"
-        android:background="@drawable/shape" >
-
-        <ImageView
-            android:id="@+id/myimage4"
+        <ToggleButton
+            android:id="@+id/fill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:src="@drawable/ic_launcher" />
+            android:text="ToggleButton"
+            android:textOff="No Fill"
+            android:textOn="Fill" />
+
+        <ToggleButton
+            android:id="@+id/recurse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switch"
+            android:textOff="Recurse Off"
+            android:textOn="Recurse On" />
     </LinearLayout>
 
-</GridLayout> 
+</LinearLayout>

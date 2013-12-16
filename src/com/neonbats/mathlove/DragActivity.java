@@ -1,83 +1,75 @@
 package com.neonbats.mathlove;
 
 import android.app.Activity;
-import android.content.ClipData;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
-import android.view.View.OnDragListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.ToggleButton;
+import android.widget.Button;
 
 public class DragActivity extends Activity {
-  
-/** Called when the activity is first created. */
+	/**
+	 * List of basic shape buttons
+	 */
+	LinearLayout shapeButtons;
+	LinearLayout functionButtons;
+	DrawingView drawingView;
+	ToggleButton recurse;
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
-    findViewById(R.id.myimage1).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.myimage2).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.myimage3).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.myimage4).setOnTouchListener(new MyTouchListener());
-    findViewById(R.id.topleft).setOnDragListener(new MyDragListener());
-    findViewById(R.id.topright).setOnDragListener(new MyDragListener());
-    findViewById(R.id.bottomleft).setOnDragListener(new MyDragListener());
-    findViewById(R.id.bottomright).setOnDragListener(new MyDragListener());
+	/** Called when the activity is first created. */
 
-  }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		this.shapeButtons = (LinearLayout) findViewById(R.id.base_shape_menu);
+		this.functionButtons = (LinearLayout) findViewById(R.id.color_picker_bar);
+		for (int i = 1; i <= 7; i++) {
+			if (i == 2)
+				continue;
+			this.shapeButtons.addView(new ShapeButton(i, this));
+		}
+		this.drawingView = (DrawingView) findViewById(R.id.drawing);
 
-  private final class MyTouchListener implements OnTouchListener {
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-      if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-        ClipData data = ClipData.newPlainText("", "");
-        DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-        view.startDrag(data, shadowBuilder, view, 0);
-        view.setVisibility(View.INVISIBLE);
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
+		((ToggleButton) findViewById(R.id.fill))
+				.setOnClickListener(new OnClickListener() {
 
-  class MyDragListener implements OnDragListener {
-    Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
-    Drawable normalShape = getResources().getDrawable(R.drawable.shape);
+					@Override
+					public void onClick(View v) {
+						Shape.Fill = !Shape.Fill;
+						DragActivity.this.drawingView.invalidate();
+					}
+				});
 
-    @Override
-    public boolean onDrag(View v, DragEvent event) {
-      int action = event.getAction();
-      switch (event.getAction()) {
-      case DragEvent.ACTION_DRAG_STARTED:
-        // do nothing
-        break;
-      case DragEvent.ACTION_DRAG_ENTERED:
-        v.setBackgroundDrawable(enterShape);
-        break;
-      case DragEvent.ACTION_DRAG_EXITED:
-        v.setBackgroundDrawable(normalShape);
-        break;
-      case DragEvent.ACTION_DROP:
-        // Dropped, reassign View to ViewGroup
-        View view = (View) event.getLocalState();
-        ViewGroup owner = (ViewGroup) view.getParent();
-        owner.removeView(view);
-        LinearLayout container = (LinearLayout) v;
-        container.addView(view);
-        view.setVisibility(View.VISIBLE);
-        break;
-      case DragEvent.ACTION_DRAG_ENDED:
-        v.setBackgroundDrawable(normalShape);
-      default:
-        break;
-      }
-      return true;
-    }
-  }
-} 
+		((ToggleButton) findViewById(R.id.recurse))
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						DragActivity.this.drawingView
+								.setRecursing(!DragActivity.this.drawingView
+										.isRecursing());
+						DragActivity.this.drawingView.invalidate();
+					}
+				});
+
+		((Button) findViewById(R.id.clear))
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						DragActivity.this.drawingView.clearAll();
+						DragActivity.this.drawingView.invalidate();
+					}
+				});
+
+		this.functionButtons.addView(new ColorButton(this,
+				Shape.BASE_SHAPE_COLOR, 1));
+		this.functionButtons.addView(new ColorButton(this,
+				Shape.FIRST_ITERATION_COLOR, 2));
+		this.functionButtons.addView(new ColorButton(this, Shape.RECURSE_COLOR,
+				3));
+
+	}
+}
