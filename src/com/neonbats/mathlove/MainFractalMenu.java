@@ -18,9 +18,8 @@ import android.widget.RelativeLayout;
 public class MainFractalMenu extends Activity implements OnTouchListener, AnimationListener {
 
 	private TriangleMenu m;
-	private Animation zoomIn;
+	private Animation zoomIn, zoomOut;
 	private Point touchPt;
-	private Animation zoomOut;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,7 @@ public class MainFractalMenu extends Activity implements OnTouchListener, Animat
 		top.addView(m);
 		m.setOnTouchListener(this);
 		
-		int exitAnim = Animation.INFINITE;	
-		
+		int exitAnim = Animation.ABSOLUTE;	
 		ComponentName a = getCallingActivity();
 		
 		if (a != null) {
@@ -46,7 +44,7 @@ public class MainFractalMenu extends Activity implements OnTouchListener, Animat
 				zoomOut.setFillAfter(true);
 				m.startAnimation(zoomOut);
 			
-			} else if (a.equals(MainDrawing.class)) {
+			} else if (a.getClassName().equals("com.neonbats.mathlove.MainDrawing")) {
 			
 				exitAnim = R.anim.zoom_exit_right;
 				zoomOut = AnimationUtils.loadAnimation(getApplicationContext(), exitAnim);        
@@ -54,7 +52,7 @@ public class MainFractalMenu extends Activity implements OnTouchListener, Animat
 				zoomOut.setFillAfter(true);
 				m.startAnimation(zoomOut);
 			
-			} else if (a.equals(MainGallery.class)) {
+			} else if (a.getClassName().equals("com.neonbats.mathlove.MainGallery")) {
 			
 				exitAnim = R.anim.zoom_exit_bottom;
 				zoomOut = AnimationUtils.loadAnimation(getApplicationContext(), exitAnim);        
@@ -72,7 +70,7 @@ public class MainFractalMenu extends Activity implements OnTouchListener, Animat
 	/**
 	 * OnTouch method of OnTouchListener interface
 	 * 
-	 * Currently, this does animation between activities ... TODO - modify to zoom in/out within an activity
+	 * Currently, this does animation between activities 
 	 */
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
@@ -80,31 +78,42 @@ public class MainFractalMenu extends Activity implements OnTouchListener, Animat
 		touchPt = new Point();
 		touchPt.set((int) event.getX(), (int) event.getY());
 
-		// Initialize animation= infinite <---- CHANGE THIS
-		int enterAnim = Animation.INFINITE;
+		// Initialize animation= infinite 
+		int enterAnim = Animation.ABSOLUTE;
 		
 		if (m.inTriangleNumber(touchPt) == 1) { // left triangle
+			
+			System.out.println("ZOOM ENTER LEFT");
+			
 			// first draw small triangles then zoom
 			enterAnim = R.anim.zoom_enter_left;
 			m.setSelection(1);
 			
 		} else if (m.inTriangleNumber(touchPt) == 2) { // right triangle
+			
+
+			System.out.println("ZOOM ENTER RIGHT");
 			// first draw small triangles then zoom
 			enterAnim = R.anim.zoom_enter_right;
 			m.setSelection(2);
+			
 		} else if (m.inTriangleNumber(touchPt) == 3) { // bottom triangle
+
+			System.out.println("ZOOM ENTER BOTTOM");
 			// first draw small triangles then zoom
 			enterAnim = R.anim.zoom_enter_bottom;
 			m.setSelection(3);
 		}
 		
-		m.postInvalidate();
-		
-		zoomIn = AnimationUtils.loadAnimation(getApplicationContext(), enterAnim);        
-		zoomIn.setAnimationListener(this);
-		
-		zoomIn.setFillAfter(true);
-		m.startAnimation(zoomIn);
+		if (enterAnim != Animation.ABSOLUTE) {
+			m.invalidate();
+
+			zoomIn = AnimationUtils.loadAnimation(getApplicationContext(), enterAnim);        
+			zoomIn.setAnimationListener(this);
+
+			zoomIn.setFillAfter(true);
+			m.startAnimation(zoomIn);
+		}
 		
 		return true;
 	}
@@ -112,37 +121,33 @@ public class MainFractalMenu extends Activity implements OnTouchListener, Animat
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		// Start next activity
 		
-		ComponentName a = getCallingActivity();
-		
-		if ((a != null) && (a.getClassName().equals("com.neonbats.mathlove.MainLesson") 
-				|| a.getClassName().equals("com.neonbats.mathlove.MainDrawing") 
-				|| a.getClassName().equals("com.neonbats.mathlove.MainGallery"))) {
-			
-		} else {
-
-			Class goTo = MainFractalMenu.class;		
-
+		if (animation.equals(zoomIn)) {
+			// Start next activity
 			if (m.inTriangleNumber(touchPt) == 1) { // left triangle
-				goTo = MainLesson.class;
+				System.out.println("IM HERE --- pt1");
+				
+				Intent i = new Intent(this, MainLesson.class);
+				startActivity(i);
 			} else if (m.inTriangleNumber(touchPt) == 2) { // right triangle
-				goTo = MainDrawing.class;
+				
+				System.out.println("IM HERE --- pt2");
+				Intent i = new Intent(this, MainDrawing.class);
+				startActivity(i);
 			} else if (m.inTriangleNumber(touchPt) == 3) { // bottom triangle
-				goTo = MainGallery.class;
+				
+				System.out.println("IM HERE --- pt3");
+				Intent i = new Intent(this, MainGallery.class);
+				startActivity(i);
 			}
 
-			Intent i = new Intent(this, goTo);
-			startActivity(i);
-		}
-		
+		} 
 		
 	}
 
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
 		
 	}
 

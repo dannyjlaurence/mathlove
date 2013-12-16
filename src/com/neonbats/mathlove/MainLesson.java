@@ -11,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -21,7 +20,6 @@ public class MainLesson extends Activity implements OnTouchListener, AnimationLi
 	private TriangleMenu m;
 	private Point touchPt;
 	private int ct = 0;
-	private Animation zoomOut;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,11 +39,13 @@ public class MainLesson extends Activity implements OnTouchListener, AnimationLi
 
 		if (m.inTriangleNumber(touchPt) == 1) { // left triangle
 			
-			// TODO INSERT LESSON MAP ACTIVITY TRANSITION HERE
+			Intent i = new Intent(this, LessonMap.class);	
+			startActivity(i);
 			
 		} else if (m.inTriangleNumber(touchPt) == 2) { // right triangle
 
-			// TODO INSERT NEXT LESSON ACTIVITY TANSITION HERE
+			Intent i = new Intent(this, LessonOne.class);	
+			startActivity(i);
 			
 		} else if (m.inTriangleNumber(touchPt) == 3) { // bottom triangle
 
@@ -87,9 +87,7 @@ public class MainLesson extends Activity implements OnTouchListener, AnimationLi
 //		zoomOut.setAnimationListener(this);
 //		zoomOut.setFillAfter(true);
 //		
-		Intent i = new Intent(this, MainFractalMenu.class);
-	//	i.putExtra("classFrom", MainLesson.class);
-		
+		Intent i = new Intent(this, MainFractalMenu.class);	
 		startActivityForResult(i, 0);
 		
 //		m.startAnimation(zoomOut);

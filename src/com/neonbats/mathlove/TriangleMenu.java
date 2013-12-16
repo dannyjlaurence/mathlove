@@ -17,6 +17,7 @@ class TriangleMenu extends View {
 	private MenuType menu;
 	private String b1, b2, b3;
 	private int selection;
+	private int sideSelection;
 	
 	// array of points on triangle, 5 values for x, 3 values for y
 	float[] px = new float[5];
@@ -31,14 +32,17 @@ class TriangleMenu extends View {
 			b2 = "Design a Fractal";
 			b3 = "View Gallery";
 		} else if (m == MenuType.LESSONS) {
+			sideSelection = 1;
 			b1 = "View All Lessons";
 			b2 = "Next Lesson";
 			b3 = "Placement Test";
 		} else if (m == MenuType.DRAWING) {
+			sideSelection = 2;
 			b1 = "Seed";
 			b2 = "Random";
 			b3 = "Blank";
 		} else if (m == MenuType.GALLERY) {
+			sideSelection = 3;
 			b1 = "Fractal Images";
 			b2 = "Saved Images";
 			b3 = "";
@@ -68,6 +72,35 @@ class TriangleMenu extends View {
 		py[0] = canv.getHeight()/4 - k;
 		py[1] = canv.getHeight()/2 - k/2;
 		py[2] = (float) ((0.75)*canv.getHeight());
+		
+		if (sideSelection == 1) {
+		
+			p.moveTo(px[2], py[2]);
+			p.lineTo(px[2] + 2*(px[4]-px[2]), py[2]);
+			p.lineTo(px[4], py[2] + py[2]-py[0]);
+			p.lineTo(px[2], py[2]);
+		
+		} else if (sideSelection == 2) {
+			
+			p.moveTo(px[2], py[2]);
+			p.lineTo(-px[2], py[2]);
+			p.lineTo(px[0], py[2] + py[2]-py[0]);
+			p.lineTo(px[2], py[2]);
+			
+		} else if (sideSelection == 3) {
+			
+			p.moveTo(px[0], py[0]);
+			p.lineTo(-px[2], -py[2]);
+			p.lineTo(px[2], -py[2]);
+			p.lineTo(px[0], py[0]);
+			
+			p.moveTo(px[4], py[0]);
+			p.lineTo(px[2], -py[2]);
+			p.lineTo(px[4]+px[2], -py[2]);
+			p.lineTo(px[4], py[0]);
+			
+		}
+		
 		
 		if (selection == 1) {
 			

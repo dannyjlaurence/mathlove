@@ -10,7 +10,7 @@ import android.widget.ImageView;
 public class GalleryImageAdapter extends BaseAdapter {
 	private Context mContext;
 
-	private Integer[] mImageIds = { R.drawable.image1, R.drawable.image2,
+	private Integer[] mImageIds = { R.drawable.image2,
 			R.drawable.image3, R.drawable.image4, R.drawable.image5,
 			R.drawable.image6, R.drawable.image7, R.drawable.image8 };
 

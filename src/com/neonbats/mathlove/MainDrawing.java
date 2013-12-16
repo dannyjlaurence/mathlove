@@ -11,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -21,7 +20,6 @@ public class MainDrawing extends Activity implements OnTouchListener, AnimationL
 	private TriangleMenu m;
 	private int ct;
 	private Point touchPt;
-	private Animation zoomOut;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +63,9 @@ public class MainDrawing extends Activity implements OnTouchListener, AnimationL
 			
 		} else if (m.inTriangleNumber(touchPt) == 3) { // bottom triangle
 
-			// TODO -- INSERT CODE TO GO TO BLANK CANVAS ACTIVITY HERE
-			
+			Intent i = new Intent(this, DragActivity.class);	
+			startActivity(i);
+
 		}
 		
 		return true;
@@ -81,12 +80,13 @@ public class MainDrawing extends Activity implements OnTouchListener, AnimationL
 //		
 //		zoomOut = AnimationUtils.loadAnimation(getApplicationContext(), exitAnim);        
 //		zoomOut.setAnimationListener(this);
-//		
+//	
+		Intent i = new Intent(this, MainFractalMenu.class);	
+		startActivityForResult(i, 0);
+
+		
 //		m.startAnimation(zoomOut);
 		
-		Intent i = new Intent(this, MainFractalMenu.class);
-		i.putExtra("classFrom", MainDrawing.class);
-		startActivity(i);
 	}
 
 	@Override

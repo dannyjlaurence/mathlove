@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class Gallary extends Activity {
 
 	ImageView selectedImage;
-	private Integer[] mImageIds = { R.drawable.image1, R.drawable.image2,
+	private Integer[] mImageIds = { R.drawable.image2,
 			R.drawable.image3, R.drawable.image4, R.drawable.image5,
 			R.drawable.image6, R.drawable.image7, R.drawable.image8 };
 
@@ -37,9 +37,6 @@ public class Gallary extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				Toast.makeText(Gallary.this,
-						"Your selected position = " + position,
-						Toast.LENGTH_SHORT).show();
 				// show the selected Image
 				Gallary.this.selectedImage
 						.setImageResource(Gallary.this.mImageIds[position]);

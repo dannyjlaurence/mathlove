@@ -11,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -21,7 +20,6 @@ public class MainGallery extends Activity implements OnTouchListener, AnimationL
 	private TriangleMenu m;
 	private Point touchPt;
 	private int ct;
-	private Animation zoomOut;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,13 +36,13 @@ public class MainGallery extends Activity implements OnTouchListener, AnimationL
 		touchPt = new Point();
 		touchPt.set((int) event.getX(), (int) event.getY());
 
-		if (m.inTriangleNumber(touchPt) == 1 ||
-				m.inTriangleNumber(touchPt) == 2) { // left triangle
+		if (m.inTriangleNumber(touchPt) == 1) { // left triangle
 			
-			// TODO -- insert activity transition code here 
+			Intent i = new Intent(this, Gallary.class);	
+			startActivity(i);
+
 			
-			
-		} else if (m.inTriangleNumber(touchPt) == 3) { // bottom triangle
+		} else if (m.inTriangleNumber(touchPt) == 2 || m.inTriangleNumber(touchPt) == 3) { // bottom triangle
 
 			final Dialog d = new Dialog(this);
 			Button ok = new Button(this);
@@ -83,11 +81,11 @@ public class MainGallery extends Activity implements OnTouchListener, AnimationL
 //		zoomOut = AnimationUtils.loadAnimation(getApplicationContext(), exitAnim);        
 //		zoomOut.setAnimationListener(this);
 //		
+		Intent i = new Intent(this, MainFractalMenu.class);	
+		startActivityForResult(i, 0);
+
 //		m.startAnimation(zoomOut);
 		
-		Intent i = new Intent(this, MainFractalMenu.class);
-		i.putExtra("classFrom", MainGallery.class);
-		startActivity(i);
 	}
 	
 	@Override
@@ -98,13 +96,11 @@ public class MainGallery extends Activity implements OnTouchListener, AnimationL
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
 		
 	}
 	
