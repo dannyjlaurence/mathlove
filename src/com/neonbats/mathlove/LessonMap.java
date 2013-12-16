@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 
 public class LessonMap extends Activity {
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
 		 setContentView(R.layout.lessonmap);
